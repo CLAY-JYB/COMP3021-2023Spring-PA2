@@ -71,33 +71,17 @@ The method `register` should return a user with the specified user name, the ass
 The class `MiniMendeley` is the main class of our system.
 After intializing all the fields, it loads all the papers in the default bib file to `paperBase`
 by invoking `populatePaperBaseWithDefaultBibFile`,
-which depends on the `BibParser` you implemented.
+which depends on the `BibParser`.
 Then the method `userInterface` proccesses the commands in the console and invoke the corresponding handlers.
-We have provide the incomplete implementation of `userInterface`.
-Initially, a user account should be created,
-so you need to create a new user account and add it to `users`.
+Initially, a user account is created and we add it to `users`.
 When a new user account is created in the middle of the execution,
 the current user account will be overwritten, 
 i.e., the newly created user account is the one who performs the subsequent operations.
-All the resources (comments, tags, and papers) should be added the corresponding fields of `MiniMendeley`,
+All the resources (comments, tags, and papers) are added to the corresponding fields of `MiniMendeley`,
 and meanwhile,
-the fields of these resources should be updated, e.g., the fields `tags` and `comments` of a `Paper` object.
+the fields of these resources are updated, e.g., the fields `tags` and `comments` of a `Paper` object.
 
 ## What YOU need to do
-
-### PA1
-
-- Fully define the class `Action` and its subclasses, including their constructors and other necessary methods.
-- Fully implement `BibExporter` and `BibParser`
-- Fully implement the methods in the class `MiniMendeley`
-  - processAddCommentAction
-  - processAddTagAction
-  - processDownloadPaperAction
-  - processSearchPaperAction
-  - processUploadPaperAction
-  - user_interface
-
-### <u>**PA2**</u>
 
 * <u>**Fully implement the functional interfaces in the class `SearchPaperAction` and utilize them to implement the new method `processSearchPaperActionByLambda` following the original logic of the `processSearchPaperAction`.**</u> 
 * <u>**Fully implement the functional interfaces in the class `SortPaperAction` and utilize them to implement the new method `processSortPaperActionByLambda`.**</u>
