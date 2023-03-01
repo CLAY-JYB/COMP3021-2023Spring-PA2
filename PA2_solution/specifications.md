@@ -46,6 +46,8 @@ An `Action` class contains four fields, namely "time: date" (indicating creation
 
 Apart from the class `Action`, there are five another subclasses of `Action`, which incidate five typicl operations over the paper base. Similar to `Person` and it subclasses, the five classes also need to be implemented to support the original functionality of Mini-Mendeley.
 
+**<u>In addition to the above five subclasses for PA1, there are new subclasses `SortPaperAction`, `SearchResearcherAction` and `StatisticalInformationAction` for PA2. We also add new interfaces in the subclass `SearchPaperAction`. All new subclasses need to be implemented to support the new functionality of Mini-Mendeley. Note that we might modify some member variables and member methods for more convenient development.</u>**
+
 ## Utils
 
 To support the paper uploading/downloading and the user registeration, you are also required to define the following three classes as follows:
@@ -66,6 +68,8 @@ The method `register` should return a user with the specified user name, the ass
 
 ## MiniMendeley
 
+#### PA1
+
 The class `MiniMendeley` is the main class of our system.
 After intializing all the fields, it loads all the papers in the default bib file to `paperBase`
 by invoking `populatePaperBaseWithDefaultBibFile`,
@@ -80,6 +84,10 @@ i.e., the newly created user account is the one who performs the subsequent oper
 All the resources (comments, tags, and papers) should be added the corresponding fields of `MiniMendeley`,
 and meanwhile,
 the fields of these resources should be updated, e.g., the fields `tags` and `comments` of a `Paper` object.
+
+#### PA2
+
+
 
 ## What YOU need to do
 
