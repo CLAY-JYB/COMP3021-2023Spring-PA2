@@ -98,119 +98,155 @@ To convenience the testing and debugging, you can just run the `main` method of 
 to interact with the system.
 An example is as follows:
 
-````
+````shell
 Begin to start MiniMendeley...
 ----------------------------------------------------------------------
 MiniMendeley is running...
 Initial paper base has been populated!
 ----------------------------------------------------------------------
 Please select the following operations with the corresponding numbers:
-0: Register an account
-1: Search papers
-2: Upload papers
-3: Download papers
-4: Add tags
-5: Add comments
-6: Exit
+  0: Register an account
+  1: Search papers
+  2: Upload papers
+  3: Download papers
+  4: Add labels
+  5: Add comments
+  6: Search papers via Lambda
+  7: Sort papers via Lambda
+  8: Search researchers via Lambda
+  9: Obtain statistical information via Lambda
+  10: Exit
 ----------------------------------------------------------------------
-> 1
-You need to register an account first.
-----------------------------------------------------------------------
-Please select the following operations with the corresponding numbers:
-0: Register an account
-1: Search papers
-2: Upload papers
-3: Download papers
-4: Add tags
-5: Add comments
-6: Exit
-----------------------------------------------------------------------
-> 0
+0
 Please enter your name.
-> Chengpeng
-Create the account with the name: Chengpeng
+Yibo
+Create the account with the name: Yibo
 Account created!
 ----------------------------------------------------------------------
 Please select the following operations with the corresponding numbers:
-0: Register an account
-1: Search papers
-2: Upload papers
-3: Download papers
-4: Add tags
-5: Add comments
-6: Exit
+  0: Register an account
+  1: Search papers
+  2: Upload papers
+  3: Download papers
+  4: Add labels
+  5: Add comments
+  6: Search papers via Lambda
+  7: Sort papers via Lambda
+  8: Search researchers via Lambda
+  9: Obtain statistical information via Lambda
+  10: Exit
 ----------------------------------------------------------------------
-> 2
-Please specify the absolute path of the bib file:
-> /Users/xiangqian/Documents/TA/comp3021_charles_2023S/COMP3021-2023Spring-PA1/src/main/resources/bibdata/PAUploadData1.bib
-Succeed! The uploaded papers are as follows:
-Jones1979
-Chase1990
-Hutchison1973
+6
+Please specify the search kind:
+  1: Search by ID
+  2: Search by title
+  3: Search by author
+  4: Search by journal
+3
+Please specify the search word:
+Wonhyuk Choi
+Paper found! The paper IDs are as follows:
+Choi2022
 ----------------------------------------------------------------------
 Please select the following operations with the corresponding numbers:
-0: Register an account
-1: Search papers
-2: Upload papers
-3: Download papers
-4: Add tags
-5: Add comments
-6: Exit
+  0: Register an account
+  1: Search papers
+  2: Upload papers
+  3: Download papers
+  4: Add labels
+  5: Add comments
+  6: Search papers via Lambda
+  7: Sort papers via Lambda
+  8: Search researchers via Lambda
+  9: Obtain statistical information via Lambda
+  10: Exit
 ----------------------------------------------------------------------
-> 3
-Please specify the absolute path of the bib file:
-/Users/xiangqian/Documents/TA/comp3021_charles_2023S/COMP3021-2023Spring-PA1/src/main/resources/bibdata/PADownloadData1.bib
-Please enter the paper ID line by line and end with END
-> Jones1979
-> Chase1990
-> END
-@article{Jones1979,
-abstract = {In [12] the authors introduced the concept of binding time optimization and presented a series of data flow analytic methods for determining some of the binding time characteristics of programs. In this paper we extend that work by providing methods for determining the class of shapes which an unbounded data object may assume during execution of a LISP-like program, and describe a number of uses to which that information may be put to improve storage allocation in compilers and interpreters for advanced programming languages.We are concerned chiefly with finding, for each program point and variable a finite description of a set of graphs which includes all the shapes of values the variable could assume at that point during the execution of a program. If this set is small or regular in structure, this information can be used to optimize the program's execution, mainly by use of more efficient storage allocation schemes.In the first part we show how to construct from a program without selective updating a tree grammar whose nonterminals generate the desired sets of graphs; in this case they will all be trees. The tree grammars are of a more general form than is usually studied [8, 19], so we show that they may be converted to the usual form. The resulting tree grammar could naturally be viewed as a recursive type definition [11] of the values the variables may assume. Further, standard algorithms may be employed to test for infiniteness, emptiness or linearity of the tree structure.In the second part selective updating is allowed, so an alternate semantics is introduced which more closely resembles traditional LISP implementations, and which is equivalent to the tree model for programs without selective updating. In this model data objects are directed graphs. We devise a finite approximation method which provides enough information to detect cell sharing and cyclic structures whenever they can possibly occur. This information can be used to recognize when the use of garbage collection or of reference counts may be avoided.The work reported in the second part of this paper extends that of Schwartz [17] and Cousot and Cousot [7]. They have developed methods for determining whether the values of two or more variables share cells, while we provide information on the detailed structure of what is shared. The ability to detect cycles is also new. It also extends the work of Kaplan [13], who distinguishes only binary relations among the variables of a program, does not handle cycles, and does not distinguish selectors (so that his analysis applies to nodes representing sets rather than ordered tuples).},
-author = {Neil D. Jones and Steven S. Muchnick},
-doi = {10.1145/567752.567776},
-journal = {Conference Record of the Annual ACM Symposium on Principles of Programming Languages},
-title = {Flow analysis and optimization of LISP-like structures},
-year = {1979},
+7
+Please specify the sort base:
+  1: Sort by ID
+  2: Sort by title
+  3: Sort by author
+  4: Sort by journal
+1
+Please specify the sort kind:
+  1: Sort in ascending order
+  2: Sort in descending order
+1
+Paper sorted! The paper are sorted as follows:
+...
+@article{Xie2016,
+   abstract = {Loops are challenging structures for program analysis, especial-ly when loops contain multiple paths with complex interleaving executions among these paths. In this paper, we first propose a classification of multi-path loops to understand the complexity of the loop execution, which is based on the variable updates on the loop conditions and the execution order of the loop paths. Second-ly, we propose a loop analysis framework, named Proteus, which takes a loop program and a set of variables of interest as inputs and summarizes path-sensitive loop effects on the variables. The key contribution is to use a path dependency automaton (PDA) to capture the execution dependency between the paths. A DFS-based algorithm is proposed to traverse the PDA to summarize the effect for all feasible executions in the loop. The experimental results show that Proteus is effective in three applications: Proteus can 1) compute a more precise bound than the existing loop bound analysis techniques; 2) significantly outperform state-of-the-art tools for loop verification; and 3) generate test cases for deep loops within one second, while KLEE and Pex either need much more time or fail.},
+   author = {Xiaofei Xie and Bihuan Chen and Yang Liu and Wei Le and Xiaohong Li},
+   doi = {10.1145/2950290.2950340},
+   journal = {Proceedings of the ACM SIGSOFT Symposium on the Foundations of Software Engineering},
+   keywords = {Disjunctive Summary,Loop Summarization},
+   title = {Proteus: Computing disjunctive loop summary via path dependency analysis},
+   year = {2016},
 }
-@article{Chase1990,
-abstract = {Note: \{OCR\},
-author = {David R. Chase and Mark Wegman and F. Kenneth Zadeck},
-doi = {10.1145/93542.93585},
-journal = {Proceedings of the ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)},
-title = {Analysis of pointers and structures},
-year = {1990},
+...
+----------------------------------------------------------------------
+Please select the following operations with the corresponding numbers:
+  0: Register an account
+  1: Search papers
+  2: Upload papers
+  3: Download papers
+  4: Add labels
+  5: Add comments
+  6: Search papers via Lambda
+  7: Sort papers via Lambda
+  8: Search researchers via Lambda
+  9: Obtain statistical information via Lambda
+  10: Exit
+----------------------------------------------------------------------
+8
+Please specify the search kind:
+  1: Search researchers who publish papers more than X times in the recent Y years
+  2: Search researchers whose papers published in the journal X have abstracts more than Y words
+  3: Search researchers whoes keywords have more than similarity X as one of those of the researcher Y
+Please specify the X:
+3
+Please specify the Y:
+10
+Researcher found! The researcher information is as follows:
+...
+@article{Xie2019,
+   abstract = {Analyzing loops is very important for various software engineering tasks such as bug detection, test case generation and program optimization. However, loops are very challenging structures for program analysis, especially when (nested) loops contain multiple paths that have complex interleaving relationships. In this paper, we propose the path dependency automaton (PDA) to capture the dependencies among the multiple paths in a loop. Based on the PDA, we first propose a loop classification to understand the complexity of loop summarization. Then, we propose a loop analysis framework, named Proteus, which takes a loop program and a set of variables of interest as inputs and summarizes path-sensitive loop effects (i.e., disjunctive loop summary) on the variables of interest. An algorithm is proposed to traverse the PDA to summarize the effect for all possible executions in the loop. We have evaluated Proteus using loops from five open-source projects and two well-known benchmarks and applying the disjunctive loop summary to three applications: loop bound analysis, program verification and test case generation. The evaluation results have demonstrated that Proteus can compute a more precise bound than the existing loop bound analysis techniques; Proteus can significantly outperform the state-of-the-art tools for loop program verification; and Proteus can help generate test cases for deep loops within one second, while symbolic execution tools KLEE and Pex either need much more time or fail.},
+   author = {Xiaofei Xie and Bihuan Chen and Liang Zou and Yang Liu and Wei Le and Xiaohong Li},
+   doi = {10.1109/TSE.2017.2788018},
+   journal = {IEEE Transactions on Software Engineering},
+   keywords = {Disjunctive loop summary,path dependency automaton,path interleaving},
+   title = {Automatic Loop Summarization via Path Dependency Analysis},
+   year = {2019},
 }
-
-Succeed! The downloaded paper is stored in your specified file.
+...
 ----------------------------------------------------------------------
 Please select the following operations with the corresponding numbers:
-0: Register an account
-1: Search papers
-2: Upload papers
-3: Download papers
-4: Add tags
-5: Add comments
-6: Exit
+  0: Register an account
+  1: Search papers
+  2: Upload papers
+  3: Download papers
+  4: Add labels
+  5: Add comments
+  6: Search papers via Lambda
+  7: Sort papers via Lambda
+  8: Search researchers via Lambda
+  9: Obtain statistical information via Lambda
+  10: Exit
 ----------------------------------------------------------------------
-> 4
-Please specify the paper ID:
-> Chase1990
-Please specify the label
-> shape analysis
-Succeed! The label is added.
-----------------------------------------------------------------------
-Please select the following operations with the corresponding numbers:
-0: Register an account
-1: Search papers
-2: Upload papers
-3: Download papers
-4: Add tags
-5: Add comments
-6: Exit
-----------------------------------------------------------------------
-> 6
+9
+Please specify the information:
+  1: Obtain the average number of papers published by researchers per year
+  2: Obtain the journals that receive the most papers every year
+1
+Information Obtained! The information is as follows:
+...
+Nurit Dor: 1.0
+Byron Cook: 2.0
+Mooly Sagiv: 1.3333333333333333
+N. Rinetzky: 1.0
+Thanh Vu Nguyen: 1.0
+...
 ````
-
 
 Lastly, it should be noting that your code will be tested by running our testcases rather than testing via the console manually.
 Therefore, you should make sure that: (1) your code can be complied succesfully;

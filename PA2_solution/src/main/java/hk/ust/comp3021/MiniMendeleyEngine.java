@@ -472,7 +472,7 @@ public class MiniMendeleyEngine {
         System.out.println("Please specify the search kind:");
         System.out.println("  1: Search researchers who publish papers more than X times in the recent Y years");
         System.out.println("  2: Search researchers whose papers published in the journal X have abstracts more than Y words");
-        System.out.println("  3:  Search researchers whoes keywords have more than similarity X as one of those of the researcher Y");
+        System.out.println("  3: Search researchers whoes keywords have more than similarity X as one of those of the researcher Y");
         while (true) {
             Scanner scan1 = new Scanner(System.in);
             if (scan1.hasNextInt()) {
@@ -529,7 +529,7 @@ public class MiniMendeleyEngine {
                     processStatisticalInformationActionByLambda(curUser, action);
 
                     if (action.getActionResult().size() > 0) {
-                        System.out.println("Researcher found! The researcher information is as follows:");
+                        System.out.println("Information Obtained! The information is as follows:");
                         for (Map.Entry<String, Double> entry : action.getActionResult().entrySet()) {
                             System.out.println(entry.getKey() + ": " + entry.getValue());
                         }
@@ -654,8 +654,8 @@ public class MiniMendeleyEngine {
             System.out.println("  3: Download papers");
             System.out.println("  4: Add labels");
             System.out.println("  5: Add comments");
-            System.out.println("  6: Sort papers via Lambda");
-            System.out.println("  7: Search papers via Lambda");
+            System.out.println("  6: Search papers via Lambda");
+            System.out.println("  7: Sort papers via Lambda");
             System.out.println("  8: Search researchers via Lambda");
             System.out.println("  9: Obtain statistical information via Lambda");
             System.out.println("  10: Exit");

@@ -57,7 +57,10 @@ public class SearchResearcherAction extends Action {
 
     public void appendToActionResult(String researcher, Paper paper) {
         List<Paper> paperList = this.actionResult.get(researcher);
-        if (paperList == null) this.actionResult.put(researcher, new ArrayList<Paper>());
+        if (paperList == null) {
+            paperList = new ArrayList<Paper>();
+            this.actionResult.put(researcher, paperList);
+        }
         paperList.add(paper);
     }
 
