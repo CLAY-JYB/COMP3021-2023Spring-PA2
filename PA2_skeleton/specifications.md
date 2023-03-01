@@ -98,7 +98,7 @@ To convenience the testing and debugging, you can just run the `main` method of 
 to interact with the system.
 An example is as follows:
 
-````shell
+````
 Begin to start MiniMendeley...
 ----------------------------------------------------------------------
 MiniMendeley is running...
