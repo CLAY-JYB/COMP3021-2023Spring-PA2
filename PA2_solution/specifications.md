@@ -68,8 +68,6 @@ The method `register` should return a user with the specified user name, the ass
 
 ## MiniMendeley
 
-#### PA1
-
 The class `MiniMendeley` is the main class of our system.
 After intializing all the fields, it loads all the papers in the default bib file to `paperBase`
 by invoking `populatePaperBaseWithDefaultBibFile`,
@@ -85,11 +83,9 @@ All the resources (comments, tags, and papers) should be added the corresponding
 and meanwhile,
 the fields of these resources should be updated, e.g., the fields `tags` and `comments` of a `Paper` object.
 
-#### PA2
-
-
-
 ## What YOU need to do
+
+### PA1
 
 - Fully define the class `Action` and its subclasses, including their constructors and other necessary methods.
 - Fully implement `BibExporter` and `BibParser`
@@ -100,6 +96,14 @@ the fields of these resources should be updated, e.g., the fields `tags` and `co
   - processSearchPaperAction
   - processUploadPaperAction
   - user_interface
+
+### <u>**PA2**</u>
+
+* <u>**Fully implement the functional interfaces in the class `SearchPaperAction` and utilize them to implement the new method `processSearchPaperActionByLambda` following the original logic of the `processSearchPaperAction`.**</u> 
+* <u>**Fully implement the functional interfaces in the class `SortPaperAction` and utilize them to implement the new method `processSortPaperActionByLambda`.**</u>
+* <u>**Fully implement the functional interfaces in the class `SearchResearcherAction` and utilize them to implement the new method `processSearchResearcherActionByLambda`.**</u>
+* <u>**Fully implement the functional interfaces in the class `StatisticalInformationAction` and utilize them to implement the new method `processStatisticalInformationActionByLambda`.**</u>
+* <u>**Rewrite the methods `searchCommentByPaperObjID`, `searchCommentByCommentObjID` and `searchLabelByPaperID` with Lambda expressions and implement them as `searchCommentByPaperObjIDByLambda`, `searchCommentByCommentObjIDByLambda` and `searchLabelByPaperIDByLambda`, respectively.**</u> 
 
 ## Tips
 
