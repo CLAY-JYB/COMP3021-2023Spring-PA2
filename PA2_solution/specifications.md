@@ -8,7 +8,7 @@ It should support the following functionalities:
 - Support the users to upload and download papers with/into bib files.
 - Support the users to add tags to a specific paper according to paper ID.
 - Support the users to add comments to a specific paper or another comment according to paper ID or comment ID.
-- \* <u>**Support the users to search, sort, profile specified targets with Lambda expressions.**</u> \*
+- <u>**Support the users to search, sort, profile specified targets with Lambda expressions.**</u>
 
 In what follows, we provide more concrete specifications for the objects and their methods.
 
@@ -17,20 +17,14 @@ In what follows, we provide more concrete specifications for the objects and the
 ### Fields and methods
 
 A `Person` object has two fields, namely `id: String` and `name: String`.
-You should set both of them to be private and implement the methods to get or set their values.
-Also, you should implement a proper constructor according to your need.
 
 ### Subclasses
 
 The class `Person` has two subclasses, namely `Researcher` and `User`.
 
 - The class `Researcher` has one more field than the class `Person`, i.e., `papers: ArrayList<Paper>`.
-Here, `Paper` is one kind of the resources, and we will introduce it later.
 
 - The class `User` has three more fields than the class `Person`, namely `registerDate: Date`, `userComments: ArrayList<Comment>`, and `userTags: ArrayList<Tag>`.
-
-Similar to the class `Person`, all the fields of the classes `Researcher` and `User` should be private.
-You need to implement the corresponding getter and setters and the constructors of the classes.
 
 ## Resource
 
@@ -42,29 +36,26 @@ you can refer to the class files under the directory `src/main/java/hk.ust.comp3
 
 ## Action
 
-An `Action` class contains four fields, namely "time: date" (indicating creation date), "id: String" (indicating the ID of the action), `action_type: ActionTyple,(indicating the type of the action). You can refer to the file Action for more detail.
-
-Apart from the class `Action`, there are five another subclasses of `Action`, which incidate five typicl operations over the paper base. Similar to `Person` and it subclasses, the five classes also need to be implemented to support the original functionality of Mini-Mendeley.
+An `Action` class contains four fields, namely "time: date" (indicating creation date), "id: String" (indicating the ID of the action), "action_type: ActionTyple" (indicating the type of the action). You can refer to the file Action for more detail. Apart from the class `Action`, there are five another subclasses of `Action`, which incidate five typicl operations over the paper base.
 
 **<u>In addition to the above five subclasses for PA1, there are new subclasses `SortPaperAction`, `SearchResearcherAction` and `StatisticalInformationAction` for PA2. We also add new interfaces in the subclass `SearchPaperAction`. All new subclasses need to be implemented to support the new functionality of Mini-Mendeley. Note that we might modify some member variables and member methods for more convenient development.</u>**
 
 ## Utils
 
-To support the paper uploading/downloading and the user registeration, you are also required to define the following three classes as follows:
+A `Utils` class is to provide the functionalities as follows:
 
 - `BibParser`: Parse a given bib file and extract the paper objects from the bib file.
-If the parsing succeeds, you should set `isErr` to `false`.
-Otherwise, it should be set to `true`.
+If the parsing succeeds, the `isErr` is set to `false`. Otherwise, it should be set to `true`.
 The example of the bib file is `src/main/resources/bibdata/PAData.bib`.
-For some paper records, the fields in the `Paper` classes do not have the corresponding attributes, so you need to set them to be null.
+For some paper records, the fields in the `Paper` classes do not have the corresponding attributes, so they are set to be null.
 When you parse the file, you can assume that all the bib files in our testcases have the same format as our example bib file.
 
 - `BibExporter`: Dump given papers to a bib file. 
-Similar to `BibParser`, you should set `isErr` to `false`/`true` if the exporting succeeds/fails.
-The format of the exported bib file should be the same as our example bib file.
+Similar to `BibParser`, the `isErr` is set to `false`/`true` if the exporting succeeds/fails.
+The format of the exported bib file is the same as our example bib file.
 
 - `UserRegister`: Register a user. 
-The method `register` should return a user with the specified user name, the assigned user ID, and a registeration time.
+The method `register` returns a user with the specified user name, the assigned user ID, and a registeration time.
 
 ## MiniMendeley
 
