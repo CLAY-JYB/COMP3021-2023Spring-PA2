@@ -29,8 +29,7 @@ The class `Person` has two subclasses, namely `Researcher` and `User`.
 ## Resource
 
 There are three kinds of resources in Mini-Mendeley, namely `Comment`, `Paper`, and `Tag`.
-To convienence your implementation,
-we have provide the complete implementation of the three classes.
+We have provide the complete implementation of the three classes.
 For more detailed explanation of the fields and methods,
 you can refer to the class files under the directory `src/main/java/hk.ust.comp3021/resource`.
 

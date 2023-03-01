@@ -8,6 +8,7 @@ It should support the following functionalities:
 - Support the users to upload and download papers with/into bib files.
 - Support the users to add tags to a specific paper according to paper ID.
 - Support the users to add comments to a specific paper or another comment according to paper ID or comment ID.
+- <u>**Support the users to search, sort, profile specified targets with Lambda expressions.**</u>
 
 In what follows, we provide more concrete specifications for the objects and their methods.
 
@@ -16,81 +17,80 @@ In what follows, we provide more concrete specifications for the objects and the
 ### Fields and methods
 
 A `Person` object has two fields, namely `id: String` and `name: String`.
-You should set both of them to be private and implement the methods to get or set their values.
-Also, you should implement a proper constructor according to your need.
 
 ### Subclasses
 
 The class `Person` has two subclasses, namely `Researcher` and `User`.
 
 - The class `Researcher` has one more field than the class `Person`, i.e., `papers: ArrayList<Paper>`.
-Here, `Paper` is one kind of the resources, and we will introduce it later.
 
 - The class `User` has three more fields than the class `Person`, namely `registerDate: Date`, `userComments: ArrayList<Comment>`, and `userTags: ArrayList<Tag>`.
-
-Similar to the class `Person`, all the fields of the classes `Researcher` and `User` should be private.
-You need to implement the corresponding getter and setters and the constructors of the classes.
 
 ## Resource
 
 There are three kinds of resources in Mini-Mendeley, namely `Comment`, `Paper`, and `Tag`.
-To convienence your implementation,
-we have provide the complete implementation of the three classes.
+We have provide the complete implementation of the three classes.
 For more detailed explanation of the fields and methods,
 you can refer to the class files under the directory `src/main/java/hk.ust.comp3021/resource`.
 
 ## Action
 
-An `Action` class contains four fields, namely "time: date" (indicating creation date), "id: String" (indicating the ID of the action), `action_type: ActionTyple,(indicating the type of the action). You can refer to the file Action for more detail.
+An `Action` class contains four fields, namely "time: date" (indicating creation date), "id: String" (indicating the ID of the action), "action_type: ActionTyple" (indicating the type of the action). You can refer to the file Action for more detail. Apart from the class `Action`, there are five another subclasses of `Action`, which incidate five typicl operations over the paper base.
 
-Apart from the class `Action`, there are five another subclasses of `Action`, which incidate five typicl operations over the paper base. Similar to `Person` and it subclasses, the five classes also need to be implemented to support the original functionality of Mini-Mendeley.
+**<u>In addition to the above five subclasses for PA1, there are new subclasses `SortPaperAction`, `SearchResearcherAction` and `StatisticalInformationAction` for PA2. We also add new interfaces in the subclass `SearchPaperAction`. All new subclasses need to be implemented to support the new functionality of Mini-Mendeley. Note that we might modify some member variables and member methods for more convenient development.</u>**
 
 ## Utils
 
-To support the paper uploading/downloading and the user registeration, you are also required to define the following three classes as follows:
+A `Utils` class is to provide the functionalities as follows:
 
 - `BibParser`: Parse a given bib file and extract the paper objects from the bib file.
-If the parsing succeeds, you should set `isErr` to `false`.
-Otherwise, it should be set to `true`.
+If the parsing succeeds, the `isErr` is set to `false`. Otherwise, it should be set to `true`.
 The example of the bib file is `src/main/resources/bibdata/PAData.bib`.
-For some paper records, the fields in the `Paper` classes do not have the corresponding attributes, so you need to set them to be null.
+For some paper records, the fields in the `Paper` classes do not have the corresponding attributes, so they are set to be null.
 When you parse the file, you can assume that all the bib files in our testcases have the same format as our example bib file.
 
 - `BibExporter`: Dump given papers to a bib file. 
-Similar to `BibParser`, you should set `isErr` to `false`/`true` if the exporting succeeds/fails.
-The format of the exported bib file should be the same as our example bib file.
+Similar to `BibParser`, the `isErr` is set to `false`/`true` if the exporting succeeds/fails.
+The format of the exported bib file is the same as our example bib file.
 
 - `UserRegister`: Register a user. 
-The method `register` should return a user with the specified user name, the assigned user ID, and a registeration time.
+The method `register` returns a user with the specified user name, the assigned user ID, and a registeration time.
 
 ## MiniMendeley
 
 The class `MiniMendeley` is the main class of our system.
 After intializing all the fields, it loads all the papers in the default bib file to `paperBase`
 by invoking `populatePaperBaseWithDefaultBibFile`,
-which depends on the `BibParser` you implemented.
+which depends on the `BibParser`.
 Then the method `userInterface` proccesses the commands in the console and invoke the corresponding handlers.
-We have provide the incomplete implementation of `userInterface`.
-Initially, a user account should be created,
-so you need to create a new user account and add it to `users`.
+Initially, a user account is created and we add it to `users`.
 When a new user account is created in the middle of the execution,
 the current user account will be overwritten, 
 i.e., the newly created user account is the one who performs the subsequent operations.
-All the resources (comments, tags, and papers) should be added the corresponding fields of `MiniMendeley`,
+All the resources (comments, tags, and papers) are added to the corresponding fields of `MiniMendeley`,
 and meanwhile,
-the fields of these resources should be updated, e.g., the fields `tags` and `comments` of a `Paper` object.
+the fields of these resources are updated, e.g., the fields `tags` and `comments` of a `Paper` object.
 
 ## What YOU need to do
 
-- Fully define the class `Action` and its subclasses, including their constructors and other necessary methods.
-- Fully implement `BibExporter` and `BibParser`
-- Fully implement the methods in the class `MiniMendeley`
-  - processAddCommentAction
-  - processAddTagAction
-  - processDownloadPaperAction
-  - processSearchPaperAction
-  - processUploadPaperAction
-  - user_interface
+* <u>**Fully implement the functional interfaces in the class `SearchPaperAction` and utilize them to implement the new method `processSearchPaperActionByLambda` following the original logic of the `processSearchPaperAction` to support the following criteria.**</u> 
+  1. <u>**Search by ID**</u>
+  2. <u>**Search by title**</u>
+  3. <u>**Search by author**</u>
+  4. <u>**Search by journal**</u>
+* <u>**Fully implement the functional interfaces in the class `SortPaperAction` and utilize them to implement the new method `processSortPaperActionByLambda` to support the following criteria.**</u>
+  1. <u>**Search by ID**</u>
+  2. <u>**Search by title**</u>
+  3. <u>**Search by author**</u>
+  4. <u>**Search by journal**</u>
+* <u>**Fully implement the functional interfaces in the class `SearchResearcherAction` and utilize them to implement the new method `processSearchResearcherActionByLambda` to support the following criteria.**</u>
+  1. <u>**Search researchers who publish papers more than X times in the recent Y years**</u>
+  2. <u>**Search researchers whose papers published in the journal X have abstracts more than Y words**</u>
+  3. <u>**Search researchers whoes keywords have more than similarity X as one of those of the researcher Y**</u>
+* <u>**Fully implement the functional interfaces in the class `StatisticalInformationAction` and utilize them to implement the new method `processStatisticalInformationActionByLambda` to support the following criteria.**</u>
+  	1. <u>**Obtain the average number of papers published by researchers per year**</u>
+  	1. <u>**Obtain the journals that receive the most papers every year**</u>
+* <u>**Rewrite the methods `searchCommentByPaperObjID`, `searchCommentByCommentObjID` and `searchLabelByPaperID` with Lambda expressions and implement them as `searchCommentByPaperObjIDByLambda`, `searchCommentByCommentObjIDByLambda` and `searchLabelByPaperIDByLambda`, respectively.**</u> 
 
 ## Tips
 

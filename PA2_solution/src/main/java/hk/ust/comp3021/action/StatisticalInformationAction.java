@@ -42,7 +42,7 @@ public class StatisticalInformationAction extends Action {
     // They are provided for implement the new profiling methods by Lambda expressions.
 
     /**
-     * `obtainer1` indicates the first profiling criteria,
+     * `obtainer1` indicates the first profiling criterion,
      *    i.e., Obtain the average number of papers published by researchers per year.
      * @param a list of papers to be profiled
      * @return `actionResult` that contains the target result
@@ -69,7 +69,7 @@ public class StatisticalInformationAction extends Action {
     };
 
     /**
-     * `obtainer2` indicates the second profiling criteria,
+     * `obtainer2` indicates the second profiling criterion,
      *    i.e., Obtain the journals that receive the most papers every year.
      * @param a list of papers to be profiled
      * @return `actionResult` that contains the target result

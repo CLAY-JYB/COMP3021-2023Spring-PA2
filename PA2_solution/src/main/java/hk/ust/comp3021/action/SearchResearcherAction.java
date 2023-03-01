@@ -65,7 +65,7 @@ public class SearchResearcherAction extends Action {
     // They are provided for implement the new researcher searching methods by Lambda expressions.
 
     /**
-     * `searchFunc1` indicates the first searching criteria,
+     * `searchFunc1` indicates the first searching criterion,
      *    i.e., Search researchers who publish papers more than X times in the recent Y years
      * @param null
      * @return `actionResult` that contains the relevant researchers
@@ -91,7 +91,7 @@ public class SearchResearcherAction extends Action {
     };
 
     /**
-     * `searchFunc2` indicates the second searching criteria,
+     * `searchFunc2` indicates the second searching criterion,
      *    i.e., Search researchers whose papers published in the journal X have abstracts more than Y words.
      * @param null
      * @return `actionResult` that contains the relevant researchers
@@ -138,7 +138,7 @@ public class SearchResearcherAction extends Action {
     }
 
     /**
-     * `searchFunc2` indicates the third searching critiria
+     * `searchFunc2` indicates the third searching criterion
      *    i.e., Search researchers whoes keywords have more than similarity X as one of those of the researcher Y.
      * @param null
      * @return `actionResult` that contains the relevant researchers
