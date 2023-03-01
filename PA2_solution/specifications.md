@@ -74,10 +74,23 @@ the fields of these resources are updated, e.g., the fields `tags` and `comments
 
 ## What YOU need to do
 
-* <u>**Fully implement the functional interfaces in the class `SearchPaperAction` and utilize them to implement the new method `processSearchPaperActionByLambda` following the original logic of the `processSearchPaperAction`.**</u> 
-* <u>**Fully implement the functional interfaces in the class `SortPaperAction` and utilize them to implement the new method `processSortPaperActionByLambda`.**</u>
-* <u>**Fully implement the functional interfaces in the class `SearchResearcherAction` and utilize them to implement the new method `processSearchResearcherActionByLambda`.**</u>
-* <u>**Fully implement the functional interfaces in the class `StatisticalInformationAction` and utilize them to implement the new method `processStatisticalInformationActionByLambda`.**</u>
+* <u>**Fully implement the functional interfaces in the class `SearchPaperAction` and utilize them to implement the new method `processSearchPaperActionByLambda` following the original logic of the `processSearchPaperAction` to support the following criteria.**</u> 
+  1. <u>**Search by ID**</u>
+  2. <u>**Search by title**</u>
+  3. <u>**Search by author**</u>
+  4. <u>**Search by journal**</u>
+* <u>**Fully implement the functional interfaces in the class `SortPaperAction` and utilize them to implement the new method `processSortPaperActionByLambda` to support the following criteria.**</u>
+  1. <u>**Search by ID**</u>
+  2. <u>**Search by title**</u>
+  3. <u>**Search by author**</u>
+  4. <u>**Search by journal**</u>
+* <u>**Fully implement the functional interfaces in the class `SearchResearcherAction` and utilize them to implement the new method `processSearchResearcherActionByLambda` to support the following criteria.**</u>
+  1. <u>**Search researchers who publish papers more than X times in the recent Y years**</u>
+  2. <u>**Search researchers whose papers published in the journal X have abstracts more than Y words**</u>
+  3. <u>**Search researchers whoes keywords have more than similarity X as one of those of the researcher Y**</u>
+* <u>**Fully implement the functional interfaces in the class `StatisticalInformationAction` and utilize them to implement the new method `processStatisticalInformationActionByLambda` to support the following criteria.**</u>
+  	1. <u>**Obtain the average number of papers published by researchers per year**</u>
+  	1. <u>**Obtain the journals that receive the most papers every year**</u>
 * <u>**Rewrite the methods `searchCommentByPaperObjID`, `searchCommentByCommentObjID` and `searchLabelByPaperID` with Lambda expressions and implement them as `searchCommentByPaperObjIDByLambda`, `searchCommentByCommentObjIDByLambda` and `searchLabelByPaperIDByLambda`, respectively.**</u> 
 
 ## Tips
