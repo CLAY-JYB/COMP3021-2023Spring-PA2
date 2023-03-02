@@ -363,6 +363,43 @@ public class MiniMendeleyEngine {
         }
     }
 
+    public void userInterfaceForPaperSearchByLambda(User curUser) {
+        System.out.println("Please specify the search kind:");
+        System.out.println("  1: Search by ID");
+        System.out.println("  2: Search by title");
+        System.out.println("  3: Search by author");
+        System.out.println("  4: Search by journal");
+        while (true) {
+            Scanner scan1 = new Scanner(System.in);
+            if (scan1.hasNextInt()) {
+                int k = scan1.nextInt();
+                if (k < 1 || k > 4) {
+                    System.out.println("You should enter 1~4.");
+                } else {
+                    System.out.println("Please specify the search word:");
+                    Scanner scan2 = new Scanner(System.in);
+                    if (scan2.hasNextLine()) {
+                        String word = scan2.nextLine();
+                        SearchPaperAction action = new SearchPaperAction("Action_" + actions.size(),
+                                curUser, new Date(), word, SearchPaperKind.values()[k - 1]);
+                        actions.add(action);
+                        processSearchPaperActionByLambda(curUser, action);
+
+                        if (action.getActionResult().size() > 0) {
+                            System.out.println("Paper found! The paper IDs are as follows:");
+                            for (Paper paper : action.getActionResult()) {
+                                System.out.println(paper);
+                            }
+                        } else {
+                            System.out.println("Paper not found!");
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     public void userInterfaceForPaperSortByLambda(User curUser) {
         System.out.println("Please specify the sort base:");
         System.out.println("  1: Sort by ID");
@@ -402,43 +439,6 @@ public class MiniMendeleyEngine {
         }
     }
 
-    public void userInterfaceForPaperSearchByLambda(User curUser) {
-        System.out.println("Please specify the search kind:");
-        System.out.println("  1: Search by ID");
-        System.out.println("  2: Search by title");
-        System.out.println("  3: Search by author");
-        System.out.println("  4: Search by journal");
-        while (true) {
-            Scanner scan1 = new Scanner(System.in);
-            if (scan1.hasNextInt()) {
-                int k = scan1.nextInt();
-                if (k < 1 || k > 4) {
-                    System.out.println("You should enter 1~4.");
-                } else {
-                    System.out.println("Please specify the search word:");
-                    Scanner scan2 = new Scanner(System.in);
-                    if (scan2.hasNextLine()) {
-                        String word = scan2.nextLine();
-                        SearchPaperAction action = new SearchPaperAction("Action_" + actions.size(),
-                                curUser, new Date(), word, SearchPaperKind.values()[k - 1]);
-                        actions.add(action);
-                        processSearchPaperActionByLambda(curUser, action);
-
-                        if (action.getActionResult().size() > 0) {
-                            System.out.println("Paper found! The paper IDs are as follows:");
-                            for (Paper paper : action.getActionResult()) {
-                                System.out.println(paper.getPaperID());
-                            }
-                        } else {
-                            System.out.println("Paper not found!");
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
     public void userInterfaceForResearcherSearchByLambda(User curUser) {
         System.out.println("Please specify the search kind:");
         System.out.println("  1: Search researchers who publish papers more than X times in the recent Y years");
@@ -469,7 +469,7 @@ public class MiniMendeleyEngine {
                                 for (Map.Entry<String, List<Paper>> entry : action.getActionResult().entrySet()) {
                                     System.out.println(entry.getKey());
                                     for (Paper paper : entry.getValue()) {
-                                        System.out.println(paper.getTitle());
+                                        System.out.println(paper);
                                     }
                                 }
                             } else {
@@ -505,7 +505,7 @@ public class MiniMendeleyEngine {
                             System.out.println(entry.getKey() + ": " + entry.getValue());
                         }
                     } else {
-                        System.out.println("Researcher not found!");
+                        System.out.println("Information not obtained!");
                     }
                     break;
                 }
