@@ -495,8 +495,9 @@ public class MiniMendeleyEngine {
 
                             if (action.getActionResult().size() > 0) {
                                 System.out.println("Researcher found! The researcher information is as follows:");
+                                int count = 0;
                                 for (Map.Entry<String, List<Paper>> entry : action.getActionResult().entrySet()) {
-                                    System.out.println(entry.getKey());
+                                    System.out.println(count++ + " " + entry.getKey());
                                     for (Paper paper : entry.getValue()) {
                                         System.out.println(paper);
                                     }
@@ -530,9 +531,8 @@ public class MiniMendeleyEngine {
 
                     if (action.getActionResult().size() > 0) {
                         System.out.println("Information Obtained! The information is as follows:");
-                        int count = 0;
                         for (Map.Entry<String, Double> entry : action.getActionResult().entrySet()) {
-                            System.out.println(count++ + " " + entry.getKey() + ": " + entry.getValue());
+                            System.out.println(entry.getKey() + ": " + entry.getValue());
                         }
                     } else {
                         System.out.println("Information not obtained!");

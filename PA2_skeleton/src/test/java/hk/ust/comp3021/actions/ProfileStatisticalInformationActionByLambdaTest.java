@@ -3,17 +3,17 @@ package hk.ust.comp3021.actions;
 import hk.ust.comp3021.action.StatisticalInformationAction;
 import hk.ust.comp3021.action.StatisticalInformationAction.InfoKind;
 import hk.ust.comp3021.person.User;
-import hk.ust.comp3021.utils.TestKind;
+// import hk.ust.comp3021.utils.TestKind;
 import hk.ust.comp3021.MiniMendeleyEngine;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Tag;
+// import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
 public class ProfileStatisticalInformationActionByLambdaTest {
-    @Tag(TestKind.PUBLIC)
+    // @Tag(TestKind.PUBLIC)
     @Test
     void testProfileStatisticalInformationAction_ActionsSize() {
         MiniMendeleyEngine engine = new MiniMendeleyEngine();
@@ -29,7 +29,7 @@ public class ProfileStatisticalInformationActionByLambdaTest {
         assertEquals(currentSize, originalSize + 1);
     }
 
-    @Tag(TestKind.PUBLIC)
+    // @Tag(TestKind.PUBLIC)
     @Test
     void testProfileStatisticalInformationAction_ProfileAverage() {
         MiniMendeleyEngine engine = new MiniMendeleyEngine();
@@ -45,7 +45,7 @@ public class ProfileStatisticalInformationActionByLambdaTest {
         assertEquals(searchResult1.get("Alvin Cheung"), 1.6666666666666667);
     }
 
-    @Tag(TestKind.PUBLIC)
+    // @Tag(TestKind.PUBLIC)
     @Test
     void testProfileStatisticalInformationAction_ProfileMaximal() {
     	MiniMendeleyEngine engine = new MiniMendeleyEngine();

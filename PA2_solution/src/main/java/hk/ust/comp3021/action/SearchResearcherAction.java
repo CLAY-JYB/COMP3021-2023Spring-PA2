@@ -81,7 +81,7 @@ public class SearchResearcherAction extends Action {
             entry.getValue().addAll(newPaperList);
         });
         List<Map.Entry<String, List<Paper>>>temp = this.actionResult.entrySet().stream()
-                .filter(entry -> entry.getValue().size() > paperNum)
+                .filter(entry -> entry.getValue().size() >= paperNum)
                 .collect(Collectors.toList());
         this.actionResult.clear();
         temp.stream().forEach(entry -> {

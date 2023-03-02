@@ -132,4 +132,110 @@ public class SortPaperActionByLambdaTest {
         assertEquals(searchResult2.get(4).getJournal(), "Reverse Engineering - Working Conference Proceedings");
         assertEquals(searchResult2.get(20).getJournal(), "Proceedings of the ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)");
     }
+
+    @Tag(TestKind.HIDDEN)
+    @Test
+    void testSortPaperAction_SortByID_Hidden() {
+        MiniMendeleyEngine engine = new MiniMendeleyEngine();
+        String userID = "User_" + engine.getUsers().size();
+        User user = engine.processUserRegister(userID, "testUser", new Date());
+
+        SortPaperAction action1 = new SortPaperAction("Action_1", user, new Date(), SortBase.ID, SortKind.ASCENDING);
+        List<Paper> searchResult1 = engine.processSortPaperActionByLambda(user, action1);
+
+        assertEquals(searchResult1.size(), 123);
+        assertEquals(searchResult1.get(2).getJournal(), null);
+        assertEquals(searchResult1.get(6).getTitle(), "PPTFI: Patch Presence Test for Function-Irrelevant Patches");
+        assertEquals(searchResult1.get(55).getPaperID(), "Jarzabek2007");
+        assertEquals(searchResult1.get(73).getJournal(), null);
+        assertEquals(searchResult1.get(99).getKeywords().size(), 0);
+
+        SortPaperAction action2 = new SortPaperAction("Action_2", user, new Date(), SortBase.ID, SortKind.DESCENDING);
+        List<Paper> searchResult2 = engine.processSortPaperActionByLambda(user, action2);
+
+        assertEquals(searchResult2.size(), 123);
+        assertEquals(searchResult2.get(0).getJournal(), null);
+        assertEquals(searchResult2.get(7).getTitle(), "Loopster: Static loop termination analysis");
+        assertEquals(searchResult2.get(36).getPaperID(), "Piskac2014");
+        assertEquals(searchResult2.get(39).getJournal(), null);
+        assertEquals(searchResult2.get(62).getKeywords().size(), 6);
+    }
+
+    @Tag(TestKind.HIDDEN)
+    @Test
+    void testSortPaperAction_SortByAuthor_Hidden() {
+    	MiniMendeleyEngine engine = new MiniMendeleyEngine();
+        String userID = "User_" + engine.getUsers().size();
+        User user = engine.processUserRegister(userID, "testUser", new Date());
+
+        SortPaperAction action1 = new SortPaperAction("Action_1", user, new Date(), SortBase.AUTHOR, SortKind.ASCENDING);
+        List<Paper> searchResult1 = engine.processSortPaperActionByLambda(user, action1);
+
+        assertEquals(searchResult1.size(), 123);
+        assertEquals(searchResult1.get(8).getAuthors().size(), 2);
+        assertEquals(String.join(", ", searchResult1.get(8).getAuthors()), "Axel Simon, Andy King");
+        assertEquals(searchResult1.get(21).getJournal(), null);
+        assertEquals(searchResult1.get(27).getKeywords().size(), 0);
+
+        SortPaperAction action2 = new SortPaperAction("Action_2", user, new Date(), SortBase.AUTHOR, SortKind.DESCENDING);
+        List<Paper> searchResult2 = engine.processSortPaperActionByLambda(user, action2);
+
+        assertEquals(searchResult2.size(), 123);
+        assertEquals(searchResult2.get(1).getAuthors().size(), 6);
+        assertEquals(String.join(", ", searchResult2.get(1).getAuthors()), "Zheng Guo, David Cao, Davin Tjong, Jean Yang, Cole Schlesinger, Nadia Polikarpova");
+        assertEquals(searchResult2.get(6).getJournal(), null);
+        assertEquals(searchResult2.get(7).getPaperID(), "Li2012");
+        assertEquals(searchResult2.get(30).getYear(), 2020);
+        assertEquals(searchResult2.get(51).getTitle(), "Automatic partial loop summarization in dynamic test generation");
+    }
+
+    @Tag(TestKind.HIDDEN)
+    @Test
+    void testSortPaperAction_SortByTitle_Hidden() {
+    	MiniMendeleyEngine engine = new MiniMendeleyEngine();
+        String userID = "User_" + engine.getUsers().size();
+        User user = engine.processUserRegister(userID, "testUser", new Date());
+
+        SortPaperAction action1 = new SortPaperAction("Action_1", user, new Date(), SortBase.TITLE, SortKind.ASCENDING);
+        List<Paper> searchResult1 = engine.processSortPaperActionByLambda(user, action1);
+
+        assertEquals(searchResult1.size(), 123);
+        assertEquals(searchResult1.get(1).getTitle(), "A modular static analysis approach to affine loop invariants detection");
+        assertEquals(searchResult1.get(12).getJournal(), null);
+        assertEquals(searchResult1.get(26).getKeywords().size(), 0);
+        assertEquals(searchResult1.get(50).getAuthors().size(), 6);
+
+        SortPaperAction action2 = new SortPaperAction("Action_2", user, new Date(), SortBase.TITLE, SortKind.DESCENDING);
+        List<Paper> searchResult2 = engine.processSortPaperActionByLambda(user, action2);
+
+        assertEquals(searchResult2.size(), 123);
+        assertEquals(searchResult2.get(1).getJournal(), "Atc'17");
+        assertEquals(searchResult2.get(34).getTitle(), "Revamping TVLA: Making parametric shape analysis competitive");
+        assertEquals(searchResult2.get(73).getYear(), 2003);
+    }
+
+    @Tag(TestKind.HIDDEN)
+    @Test
+    void testSortPaperAction_SortByJournal_Hidden() {
+        MiniMendeleyEngine engine = new MiniMendeleyEngine();
+        String userID = "User_" + engine.getUsers().size();
+        User user = engine.processUserRegister(userID, "testUser", new Date());
+
+        SortPaperAction action1 = new SortPaperAction("Action_1", user, new Date(), SortBase.JOURNAL, SortKind.ASCENDING);
+        List<Paper> searchResult1 = engine.processSortPaperActionByLambda(user, action1);
+
+        assertEquals(searchResult1.size(), 123);
+        assertEquals(searchResult1.get(2).getJournal(), null);
+        assertEquals(searchResult1.get(6).getJournal(), null);
+        assertEquals(searchResult1.get(27).getTitle(), "Parametric shape analysis via 3-valued logic");
+        assertEquals(searchResult1.get(73).getKeywords().size(), 0);
+
+        SortPaperAction action2 = new SortPaperAction("Action_2", user, new Date(), SortBase.JOURNAL, SortKind.DESCENDING);
+        List<Paper> searchResult2 = engine.processSortPaperActionByLambda(user, action2);
+
+        assertEquals(searchResult2.size(), 123);
+        assertEquals(searchResult2.get(106).getJournal(), null);
+        assertEquals(searchResult2.get(111).getTitle(), "PPTFI: Patch Presence Test for Function-Irrelevant Patches");
+        assertEquals(String.join(", ", searchResult2.get(119).getAuthors()), "Long H. Pham, Jun Sun, Quang Loc Le");
+    }
 }
