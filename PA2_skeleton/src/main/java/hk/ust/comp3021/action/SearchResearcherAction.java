@@ -55,52 +55,47 @@ public class SearchResearcherAction extends Action {
 
     public void appendToActionResult(String researcher, Paper paper) {
         List<Paper> paperList = this.actionResult.get(researcher);
-        if (paperList == null) this.actionResult.put(researcher, new ArrayList<Paper>());
+        if (paperList == null) {
+            paperList = new ArrayList<Paper>();
+            this.actionResult.put(researcher, paperList);
+        }
         paperList.add(paper);
     }
 
-    // TODO: Implement the following common functional interfaces.
-    // They are provided for implement the new researcher searching methods by Lambda expressions.
-
     /**
-     * `searchFunc1` indicates the first searching criterion,
+     * TODO `searchFunc1` indicates the first searching criterion,
      *    i.e., Search researchers who publish papers more than X times in the recent Y years
      * @param null
      * @return `actionResult` that contains the relevant researchers
      */
-    public Supplier<HashMap<String, List<Paper>>> searchFunc1 = () -> {
-        return this.actionResult;
-    };
+    public Supplier<HashMap<String, List<Paper>>> searchFunc1;
 
     /**
-     * `searchFunc2` indicates the second searching criterion,
+     * TODO `searchFunc2` indicates the second searching criterion,
      *    i.e., Search researchers whose papers published in the journal X have abstracts more than Y words.
      * @param null
      * @return `actionResult` that contains the relevant researchers
      */
-    public Supplier<HashMap<String, List<Paper>>> searchFunc2 = () -> {
-        return this.actionResult;
-    };
+    public Supplier<HashMap<String, List<Paper>>> searchFunc2;
 
     public static int getLevenshteinDistance(String str1, String str2) {
         return 0;
     }
 
-    public static double getSimilarity(String str1, String str2) {
+    public double getSimilarity(String str1, String str2) {
         return 0;
     }
 
     /**
-     * `searchFunc2` indicates the third searching criterion
-     *    i.e., Search researchers whoes keywords have more than similarity X as one of those of the researcher Y.
+     * TODO `searchFunc2` indicates the third searching criterion
+     *    i.e., Search researchers whoes keywords have more than similarity X% as one of those of the researcher Y.
      * @param null
      * @return `actionResult` that contains the relevant researchers
-     * PS: In this method, you are required to implement an extra method that calculates the Levenshtein Distance for
+     * PS: 1) In this method, you are required to implement an extra method that calculates the Levenshtein Distance for
      *     two strings S1 and S2, i.e., the edit distance. Based on the Levenshtein Distance, you should calculate their
-     *     similarity like `1 - levenshteinDistance / max(S1.length, S2.length)`.
+     *     similarity like `(1 - levenshteinDistance / max(S1.length, S2.length)) * 100`.
+     *     2) Note that we need to remove paper(s) from the paper list of whoever are co-authors with the given researcher.
      */
-    public Supplier<HashMap<String, List<Paper>>> searchFunc3 = () -> {
-        return this.actionResult;
-    };
+    public Supplier<HashMap<String, List<Paper>>> searchFunc3;
 
 }

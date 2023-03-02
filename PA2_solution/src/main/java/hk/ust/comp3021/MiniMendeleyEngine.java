@@ -472,7 +472,7 @@ public class MiniMendeleyEngine {
         System.out.println("Please specify the search kind:");
         System.out.println("  1: Search researchers who publish papers more than X times in the recent Y years");
         System.out.println("  2: Search researchers whose papers published in the journal X have abstracts more than Y words");
-        System.out.println("  3: Search researchers whoes keywords have more than similarity X as one of those of the researcher Y");
+        System.out.println("  3: Search researchers whoes keywords have more than similarity X% as one of those of the researcher Y");
         while (true) {
             Scanner scan1 = new Scanner(System.in);
             if (scan1.hasNextInt()) {
@@ -498,7 +498,7 @@ public class MiniMendeleyEngine {
                                 for (Map.Entry<String, List<Paper>> entry : action.getActionResult().entrySet()) {
                                     System.out.println(entry.getKey());
                                     for (Paper paper : entry.getValue()) {
-                                        System.out.println(paper);
+                                        System.out.println(paper.getTitle());
                                     }
                                 }
                             } else {

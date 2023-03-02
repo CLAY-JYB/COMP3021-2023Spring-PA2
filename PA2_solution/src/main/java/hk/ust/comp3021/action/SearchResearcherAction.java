@@ -64,11 +64,8 @@ public class SearchResearcherAction extends Action {
         paperList.add(paper);
     }
 
-    // TODO: Implement the following common functional interfaces.
-    // They are provided for implement the new researcher searching methods by Lambda expressions.
-
     /**
-     * `searchFunc1` indicates the first searching criterion,
+     * TODO `searchFunc1` indicates the first searching criterion,
      *    i.e., Search researchers who publish papers more than X times in the recent Y years
      * @param null
      * @return `actionResult` that contains the relevant researchers
@@ -94,7 +91,7 @@ public class SearchResearcherAction extends Action {
     };
 
     /**
-     * `searchFunc2` indicates the second searching criterion,
+     * TODO `searchFunc2` indicates the second searching criterion,
      *    i.e., Search researchers whose papers published in the journal X have abstracts more than Y words.
      * @param null
      * @return `actionResult` that contains the relevant researchers
@@ -103,12 +100,14 @@ public class SearchResearcherAction extends Action {
         String journalName = this.searchFactorX;
         int abstractWordCnt = Integer.parseInt(this.searchFactorY);
         this.actionResult.entrySet().forEach(entry -> {
-            List<Paper> newPaperList = entry.getValue().stream()
-                    .filter(paper -> paper.getJournal() == journalName && paper.getAbsContent().length() > abstractWordCnt)
-                    .collect(Collectors.toList());
+            List<Paper> newPaperList = entry.getValue().stream().filter(paper -> {
+                return paper.getJournal() != null && paper.getJournal().equals(journalName)
+                        && paper.getAbsContent() != null && paper.getAbsContent().length() >= abstractWordCnt;
+            }).collect(Collectors.toList());
             entry.getValue().clear();
             entry.getValue().addAll(newPaperList);
         });
+        this.actionResult.entrySet().removeIf(entry -> entry.getValue().size() == 0);
         return this.actionResult;
     };
 
@@ -135,19 +134,20 @@ public class SearchResearcherAction extends Action {
         return editMatrix[m][n];
     }
 
-    public static double getSimilarity(String str1, String str2) {
+    public double getSimilarity(String str1, String str2) {
         int levenshteinDistance = getLevenshteinDistance(str1, str2);
-        return 1 - levenshteinDistance * 1.0 / Math.max(str1.length(), str2.length());
+        return (1 - levenshteinDistance * 1.0 / Math.max(str1.length(), str2.length())) * 100;
     }
 
     /**
-     * `searchFunc2` indicates the third searching criterion
-     *    i.e., Search researchers whoes keywords have more than similarity X as one of those of the researcher Y.
+     * TODO `searchFunc2` indicates the third searching criterion
+     *    i.e., Search researchers whoes keywords have more than similarity X% as one of those of the researcher Y.
      * @param null
      * @return `actionResult` that contains the relevant researchers
-     * PS: In this method, you are required to implement an extra method that calculates the Levenshtein Distance for
+     * PS: 1) In this method, you are required to implement an extra method that calculates the Levenshtein Distance for
      *     two strings S1 and S2, i.e., the edit distance. Based on the Levenshtein Distance, you should calculate their
-     *     similarity like `1 - levenshteinDistance / max(S1.length, S2.length)`.
+     *     similarity like `(1 - levenshteinDistance / max(S1.length, S2.length)) * 100`.
+     *     2) Note that we need to remove paper(s) from the paper list of whoever are co-authors with the given researcher.
      */
     public Supplier<HashMap<String, List<Paper>>> searchFunc3 = () -> {
         double similarityThreshold = Double.parseDouble(this.searchFactorX);
@@ -156,13 +156,15 @@ public class SearchResearcherAction extends Action {
             this.actionResult.clear();
             return this.actionResult;
         }
-        ArrayList<Paper> researcherPapers = (ArrayList<Paper>) this.actionResult.get(researcherName);
+        List<Paper> researcherPapers = this.actionResult.get(researcherName);
+        this.actionResult.entrySet().removeIf(entry -> entry.getKey().equals(researcherName));
         this.actionResult.entrySet().forEach(entry -> {
             List<Paper> newPaperList = entry.getValue().stream()
                     .filter(paperTest -> {
                         String keywordTest = String.join(",", paperTest.getKeywords());
                         long cnt = researcherPapers.stream().filter(paper -> {
-                            return getSimilarity(keywordTest, String.join(",", paper.getKeywords())) >= similarityThreshold;
+                            return !paper.getAuthors().contains(entry.getKey())
+                                    && getSimilarity(keywordTest, String.join(",", paper.getKeywords())) >= similarityThreshold;
                         }).count();
                         return cnt >= 1;
                     })

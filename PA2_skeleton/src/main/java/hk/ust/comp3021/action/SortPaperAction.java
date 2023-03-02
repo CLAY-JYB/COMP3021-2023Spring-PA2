@@ -57,25 +57,22 @@ public class SortPaperAction extends Action {
         this.actionResult.add(paper);
     }
 
-    // TODO: Implement the following common functional interfaces.
-    // They are provided for implement the new paper sorting methods by Lambda expressions.
-
     /**
-     * `appendToActionResultByLambda` appends one paper into `actionResult` each time.
+     * TODO `appendToActionResultByLambda` appends one paper into `actionResult` each time.
      * @param paper to be appended into `actionResult`
      * @return null
      */
     public Consumer<Paper> appendToActionResultByLambda;
 
     /**
-     * `kindPredicate` determine whether the sort kind is `SortKind.DESCENDING`.
+     * TODO `kindPredicate` determine whether the sort kind is `SortKind.DESCENDING`.
      * @param kind to be compared with `SortKind.DESCENDING`
      * @return boolean variable that indicates whether they are equal
      */
     public Predicate<SortKind> kindPredicate;
 
     /**
-     * `comparator` requires you to implement four custom comparators for different scenarios.
+     * TODO `comparator` requires you to implement four custom comparators for different scenarios.
      * @param paper to be sorted
      * @return Given the sort base, there are three conditions for the return:
      * 1) if a = b then return 0;
@@ -87,12 +84,10 @@ public class SortPaperAction extends Action {
     public Comparator<Paper> comparator;
 
     /**
-     * `sortFunc` provides a unified interface for sorting papers
+     * TODO `sortFunc` provides a unified interface for sorting papers
      * @param a list of papers to be sorted into `actionResult`
      * @return `actionResult` that contains the papers sorted in the specified order
      */
-    public Supplier<List<Paper>> sortFunc = () -> {
-        return this.actionResult;
-    };
+    public Supplier<List<Paper>> sortFunc;
 
 }

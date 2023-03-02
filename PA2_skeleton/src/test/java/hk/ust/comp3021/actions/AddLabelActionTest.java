@@ -72,6 +72,28 @@ public class AddLabelActionTest {
         }
         assertTrue(isAttached);
     }
+    
+    @Tag(TestKind.PUBLIC)
+    @Test
+    void testAddLabelAction_UserOwnership_Lambda() {
+        MiniMendeleyEngine engine = new MiniMendeleyEngine();
+        String userID = "User_" + engine.getUsers().size();
+        User user = engine.processUserRegister(userID, "testUser", new Date());
+
+        AddLabelAction action = new AddLabelAction("Action_1", user, new Date(),
+                "Abstract Domain", "Simon2004");
+        engine.processAddLabelAction(user, action);
+
+        assertNotNull(user);
+        boolean isAttached = false;
+        for (Label label : user.searchLabelByPaperIDByLambda("Simon2004")) {
+            if (label.getContent().equals("Abstract Domain")) {
+                isAttached = true;
+                break;
+            }
+        }
+        assertTrue(isAttached);
+    }
 
     @Tag(TestKind.PUBLIC)
     @Test

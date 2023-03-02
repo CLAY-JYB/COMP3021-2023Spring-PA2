@@ -48,25 +48,22 @@ public class SearchPaperAction extends Action {
         this.actionResult.add(paper);
     }
 
-    // TODO: Implement the following common functional interfaces.
-    // They are provided for rewriting the original paper searching methods by Lambda expressions.
-
     /**
-     * `appendToActionResultByLambda` appends one paper into `actionResult` each time.
+     * TODO `appendToActionResultByLambda` appends one paper into `actionResult` each time.
      * @param paper to be appended into `actionResult`
      * @return null
      */
     public Consumer<Paper> appendToActionResultByLambda = paper -> this.actionResult.add(paper);
 
     /**
-     * `isEqual` determines whether the string is equal to `searchContent`.
+     * TODO `isEqual` determines whether the string is equal to `searchContent`.
      * @param string to be compared with `searchContent`
      * @return boolean variable that indicates whether they are equal
      */
-    public Predicate<String> isEqual = Predicate.isEqual(this.searchContent);
+    public Predicate<String> isEqual = (string) -> Predicate.isEqual(this.searchContent).test(string);
 
     /**
-     * `isContain` determines whether the array list contains `searchContent`.
+     * TODO `isContain` determines whether the array list contains `searchContent`.
      * @param arrayList to be determined for the containing issue
      * @return boolean variable that indicates whether the containing exists
      */

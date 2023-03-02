@@ -36,27 +36,20 @@ public class StatisticalInformationAction extends Action {
         this.actionResult.put(key, value);
     }
 
-    // TODO: Implement the following common functional interfaces.
-    // They are provided for implement the new profiling methods by Lambda expressions.
-
     /**
-     * `obtainer1` indicates the first profiling criterion,
+     * TODO `obtainer1` indicates the first profiling criterion,
      *    i.e., Obtain the average number of papers published by researchers per year.
      * @param a list of papers to be profiled
      * @return `actionResult` that contains the target result
      */
-    public Function<List<Paper>, Map<String, Double>> obtainer1 = paperList -> {
-        return this.actionResult;
-    };
+    public Function<List<Paper>, Map<String, Double>> obtainer1;
 
     /**
-     * `obtainer2` indicates the second profiling criterion,
+     * TODO `obtainer2` indicates the second profiling criterion,
      *    i.e., Obtain the journals that receive the most papers every year.
      * @param a list of papers to be profiled
      * @return `actionResult` that contains the target result
      */
-    public Function<List<Paper>, Map<String, Double>> obtainer2 = paperList -> {
-        return this.actionResult;
-    };
+    public Function<List<Paper>, Map<String, Double>> obtainer2;
 
 }
