@@ -218,42 +218,7 @@ public class MiniMendeleyEngine {
         }
         return action.getActionResult();
     }
-
-    /**
-     * TODO: Implement the new searching method with Lambda expressions using functional interfaces.
-     * The thing you need to do is to implement the three functional interfaces, i.e., searchFunc1 / searchFunc2 /searchFunc3.
-     * The prototypes for the functional interfaces are in `SearchResearcherAction`.
-     * PS: You should operate directly on `actionResult` since we have already put the papers into it.
-     */
-    public HashMap<String, List<Paper>> processSearchResearcherActionByLambda(User curUser, SearchResearcherAction action) {
-        actions.add(action);
-        paperBase.entrySet().forEach(entry -> {
-            entry.getValue().getAuthors().forEach(author -> action.appendToActionResult(author, entry.getValue()));
-        });
-        switch (action.getKind()) {
-            case PAPER_WITHIN_YEAR:
-                action.searchFunc1.get();
-                break;
-            case JOURNAL_PUBLISH_TIMES:
-                action.searchFunc2.get();
-                break;
-            case KEYWORD_SIMILARITY:
-                action.searchFunc3.get();
-                break;
-
-            default:
-                break;
-        }
-        return action.getActionResult();
-    }
-
-    int stringProcessNullSafe (String str1, String str2) {
-        if (str1 == null && str2 == null) return 0;
-        if (str1 == null) return -1;
-        if (str2 == null) return 1;
-        return str1.compareTo(str2);
-    }
-
+    
     /**
      * TODO: Implement the custom comparators for various scenarios.
      * The things you need to do: 1) implement the functional interfaces; 2) fulfill the logic here.
@@ -289,6 +254,41 @@ public class MiniMendeleyEngine {
         }
         action.sortFunc.get();
         return action.getActionResult();
+    }
+
+    /**
+     * TODO: Implement the new searching method with Lambda expressions using functional interfaces.
+     * The thing you need to do is to implement the three functional interfaces, i.e., searchFunc1 / searchFunc2 /searchFunc3.
+     * The prototypes for the functional interfaces are in `SearchResearcherAction`.
+     * PS: You should operate directly on `actionResult` since we have already put the papers into it.
+     */
+    public HashMap<String, List<Paper>> processSearchResearcherActionByLambda(User curUser, SearchResearcherAction action) {
+        actions.add(action);
+        paperBase.entrySet().forEach(entry -> {
+            entry.getValue().getAuthors().forEach(author -> action.appendToActionResult(author, entry.getValue()));
+        });
+        switch (action.getKind()) {
+            case PAPER_WITHIN_YEAR:
+                action.searchFunc1.get();
+                break;
+            case JOURNAL_PUBLISH_TIMES:
+                action.searchFunc2.get();
+                break;
+            case KEYWORD_SIMILARITY:
+                action.searchFunc3.get();
+                break;
+
+            default:
+                break;
+        }
+        return action.getActionResult();
+    }
+
+    int stringProcessNullSafe (String str1, String str2) {
+        if (str1 == null && str2 == null) return 0;
+        if (str1 == null) return -1;
+        if (str2 == null) return 1;
+        return str1.compareTo(str2);
     }
 
     /**
