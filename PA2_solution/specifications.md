@@ -248,10 +248,10 @@ Thanh Vu Nguyen: 1.0
 ...
 ````
 
-Lastly, it should be noting that your code will be tested by running our testcases rather than testing via the console manually.
-Therefore, you should make sure that: (1) your code can be complied succesfully;
-(2) your implementation can pass the public testcases we provided in `src/test`.
-However, passing all the public testcases does not mean that you can obtain the full mark for the PA.
-We will also provide many additional testcases as the hidden ones,
-which are different from the ones we provided in this skeleton.
+Lastly, it should be noting that your code will be tested by running our testcases rather than testing via the console manually. Therefore, you should make sure that: 
 
+* your code can be complied succesfully;
+* your implementation can pass the public testcases we provided in `src/test`. However, passing all the public testcases does not mean that you can obtain the full mark for the PA. We will also provide many additional testcases as the hidden ones, which are different from the ones we provided in this skeleton.
+* your implementation should not yield too many errors when running `./gradlew checkstyleMain`.
+
+If you have any question on the PA2, please email Yibo Jin via [yjinbd@cse.ust.hk](mailto:yjinbd@cse.ust.hk)
