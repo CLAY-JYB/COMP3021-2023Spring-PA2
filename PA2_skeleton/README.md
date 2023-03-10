@@ -17,7 +17,7 @@ Please try to compile your code with `./gradlew build` before submission. You wi
 
 ## Submission
 
-#### Format
+#### 1. Format
 
 You should submit a single text file specified like this: A file named `<itsc-id>.txt` containing the URL of your private repository at the first line. For example, a student CHAN, Tai Man with ITSC ID `tmchanaa` having a repository at `https://github.com/tai-man-chan/COMP3021-PA1` should submit a file named `tmchanaa.txt` with the following content:
 
@@ -27,11 +27,11 @@ https://github.com/tai-man-chan/COMP3021-PA1
 
 Note that we are using automatic scripts to process your submission. **DO NOT add extra explanation** to the file; otherwise they will prevent our scripts from correctly processing your submission. Feel free to email us if you need clarification.
 
-#### Deadline
+#### 2. Deadline
 
 You need to submit the above file to **Canvas**. The deadline for this assignment is **April 15, 2023, 23:59:59**. 
 
-#### Important Note
+#### 3. Important Note
 
 **DO NOT forget to add** the TA's account as the collaborator of your private repository before the deadline. **We will grade your submission based on the latest committed version before the deadline.** Please make sure all the amendments are made before the deadline and do not make changes after the deadline.
 
